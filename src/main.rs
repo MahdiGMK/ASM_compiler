@@ -187,11 +187,65 @@ reg [{}:{}]{};",
 reg [{bit_count}:0]{current_state_reg} = 0;",
     ));
 
+    let mut inout_write_regs = HashMap::new();
+    for command in top_level_commands.iter() {
+        if let Command::Inout {
+            pin_name,
+            bits,
+            array,
+        } = command
+        {
+            let main_reg = code.get_varname(pin_name);
+            let write_reg = code.get_varname(&format!("{}_write_reg", pin_name));
+            if array.start == array.end && array.start == 0 {
+                code.update(format!(
+                    "
+reg [{} : {}]{};",
+                    bits.start, bits.end, main_reg
+                ));
+            } else {
+                code.update(format!(
+                    "
+reg [{} : {}]{}[{} : {}];",
+                    bits.start, bits.end, main_reg, array.start, array.end
+                ));
+            }
+            code.update(format!(
+                "
+reg {write_reg} = 0;
+assign {pin_name} = {write_reg} ? {main_reg} : 'bZ;"
+            ));
+            inout_write_regs.insert(pin_name.clone(), (main_reg, write_reg));
+        }
+    }
+
     code.update(
         "
-always(*) begin"
+always @(posedge clk) begin"
             .to_string(),
     );
+
+    for command in top_level_commands.iter() {
+        if let Command::Output {
+            pin_name,
+            bits,
+            array,
+        } = command
+        {
+            code.update(format!(
+                "
+{pin_name} = 0;"
+            ))
+        }
+    }
+    for inout in inout_write_regs.iter() {
+        code.update(format!(
+            "
+{} = 0;
+{} = {}",
+            inout.1 .1, inout.1 .0, inout.0
+        ));
+    }
 
     for node in all_nodes.iter() {
         if node.node_type == NodeType::State {
@@ -209,17 +263,29 @@ if ({} == {}) begin",
                 &mut seen,
                 &current_state_reg,
                 true,
+                &inout_write_regs,
             ) {
                 return Err(UnableToParseError::CircularDependency);
             }
 
             code.update(
                 "
-end"
-                .to_string(),
+end else"
+                    .to_string(),
             );
         }
     }
+    code.update(" begin".to_string());
+    code.update(format!(
+        "
+{} = 0;",
+        current_state_reg
+    ));
+    code.update(
+        "
+end"
+        .to_string(),
+    );
 
     code.update(
         "
@@ -245,6 +311,7 @@ fn compile_node<'l>(
     seen: &mut HashSet<&'l String>,
     current_state_reg: &String,
     full_compile: bool,
+    inout_regs: &HashMap<String, (String, String)>,
 ) -> bool {
     if !full_compile && node.node_type == NodeType::State {
         code.update(format!(
@@ -291,6 +358,7 @@ if ({}) begin",
             seen,
             current_state_reg,
             false,
+            inout_regs,
         ) {
             return false;
         }
@@ -307,6 +375,7 @@ end else begin"
             seen,
             current_state_reg,
             false,
+            inout_regs,
         ) {
             return false;
         }
@@ -324,11 +393,20 @@ end"
                 reg_name,
                 reg_value,
             } => {
-                code.update(format!(
-                    "
+                if let Some(inout) = inout_regs.get(reg_name) {
+                    code.update(format!(
+                        "
+{} <= {};
+{} <= 1;",
+                        inout.0, reg_value, inout.1
+                    ))
+                } else {
+                    code.update(format!(
+                        "
 {} <= {};",
-                    reg_name, reg_value
-                ));
+                        reg_name, reg_value
+                    ));
+                }
             }
             Command::Then { next_node } => {
                 then_node = next_node.to_string();
@@ -344,5 +422,6 @@ end"
         seen,
         current_state_reg,
         false,
+        inout_regs,
     )
 }

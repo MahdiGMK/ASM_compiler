@@ -1,0 +1,22 @@
+address => input[3:0];
+data => inout[3:0];
+write => input;
+
+mem => reg[15:0][3:0];
+
+.main : state {
+    then => writing_check;
+}
+.writing_check : decision {
+    check => write;
+    yes => do_write;
+    no => do_read;
+}
+.do_write : conditional {
+    mem[address] => data;
+    then => main;
+}
+.do_read : conditional {
+    data => mem[address];
+    then => main;
+}

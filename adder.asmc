@@ -1,0 +1,8 @@
+a => input[3:0];
+b => input[3:0];
+res => output[4:0];
+
+.main : state {
+    res => a + b;
+    then => main;
+}
