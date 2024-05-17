@@ -1,6 +1,6 @@
 use regex::Regex;
 use std::{fmt::Display, fs::read_to_string, ops::Range, path::Path, str::FromStr};
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Command {
     Input {
         pin_name: String,
@@ -40,7 +40,7 @@ pub enum Command {
     },
     Empty,
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum UnableToParseError {
     InvalidFormat,
     InvalidRange,

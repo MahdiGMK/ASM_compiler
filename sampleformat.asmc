@@ -1,6 +1,4 @@
 a => input[3:0];
-b => output[3:0];
-c => inout[3:0];
 
 r1 => reg[3:0];
 r2 => reg[3:0];
@@ -8,15 +6,17 @@ r2 => reg[3:0];
 .state_name : state {
     r1 => 0;
     r2 => r1 + 1;
-    then => .decision_name;
+    then => decision_name;
 }
+c => inout[3:0][ 4: 0];
 .conditional_name : conditional {
     r1 => 0;
     r2 => 0;
-    then => .state_name;
+    then => state_name;
 }
 .decision_name : decision {
     check => r1[0];
-    yes => .conditional_name;
-    no => .state_name;
+    yes => conditional_name;
+    no => state_name;
 }
+b => output[3:0];

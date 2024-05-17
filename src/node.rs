@@ -1,7 +1,7 @@
 use crate::command::{Command, UnableToParseError};
 use std::str::FromStr;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum NodeType {
     State,
     Decision,
@@ -32,7 +32,10 @@ impl Node {
             commands: vec![],
         };
         while let Some(str) = command_strs.next() {
-            result.commands.push(str.parse()?)
+            let cmd: Command = str.parse()?;
+            if cmd != Command::Empty {
+                result.commands.push(cmd);
+            }
         }
         Ok(result)
     }
@@ -48,12 +51,35 @@ mod tests {
             "state",
             "
 r0   =>  1;
-r1       =>  2;
-r3    =>   r0 + r1;
+
 then    =>    .state;
 ",
         );
-
-        println!("{:?}", node);
+        match node {
+            Ok(Node {
+                node_name,
+                node_type,
+                commands,
+            }) => {
+                assert_eq!(node_name, ".123salam".to_string());
+                assert_eq!(node_type, NodeType::State);
+                assert_eq!(commands.len(), 3);
+                assert_eq!(
+                    commands[0],
+                    Command::RegisterTransfer {
+                        reg_name: "r0".to_string(),
+                        reg_value: "1".to_string()
+                    }
+                );
+                assert_eq!(
+                    commands[1],
+                    Command::Then {
+                        next_node: ".state".to_string()
+                    }
+                );
+                assert_eq!(commands[2], Command::Empty);
+            }
+            _ => assert!(false),
+        }
     }
 }
