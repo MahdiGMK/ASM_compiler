@@ -15,6 +15,9 @@ pub struct Node {
     pub id: u32,
 }
 impl Node {
+    pub fn get_name(&self) -> String {
+        self.node_name.clone()
+    }
     pub fn try_parse(
         name: &str,
         node_type: &str,
@@ -28,6 +31,7 @@ impl Node {
             _ => return Err(UnableToParseError::InvalidFormat),
         };
         let mut result = Node {
+            id: 0,
             node_name: name.to_string(),
             node_type,
             commands: vec![],

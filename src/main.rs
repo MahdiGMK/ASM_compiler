@@ -28,7 +28,7 @@ fn main() -> Result<(), UnableToParseError> {
     );
 
     let mut outpath = "output.v".to_string();
-    let mut module = "ArrayMultiplier".to_string();
+    let mut module = "Top".to_string();
     while let Some(flag_name) = all_args.next() {
         match flag_name.as_ref() {
             "-o" | "--output" => {
@@ -168,17 +168,19 @@ reg [{}:{}]{};",
         }
     }
 
-    let mut state_nodes = vec![];
     let mut node_map = HashMap::new();
+    let mut state_count = 0;
     for node in all_nodes.iter_mut() {
         if node.node_type == NodeType::State {
-            node.id = state_nodes.len() as u32;
-            state_nodes.push(node);
+            node.id = state_count;
+            state_count += 1;
         }
-        node_map.insert(&node.node_name, node);
+    }
+    for node in all_nodes.iter() {
+        node_map.insert(node.get_name(), node);
     }
 
-    let bit_count = state_nodes.len().ilog2() as u8;
+    let bit_count = state_count.ilog2() as u8;
     let current_state_reg = code.get_varname(&"currentState".to_string());
     code.update(format!(
         "
@@ -191,10 +193,31 @@ always(*) begin"
             .to_string(),
     );
 
-    for node in state_nodes.iter() {
-        let mut seen = HashSet::new();
-        if !compile_node(&mut code, node, &node_map, &mut seen) {
-            return Err(UnableToParseError::CircularDependency);
+    for node in all_nodes.iter() {
+        if node.node_type == NodeType::State {
+            code.update(format!(
+                "
+if ({} == {}) begin",
+                current_state_reg, node.id
+            ));
+
+            let mut seen = HashSet::new();
+            if !compile_node(
+                &mut code,
+                node,
+                &node_map,
+                &mut seen,
+                &current_state_reg,
+                true,
+            ) {
+                return Err(UnableToParseError::CircularDependency);
+            }
+
+            code.update(
+                "
+end"
+                .to_string(),
+            );
         }
     }
 
@@ -218,9 +241,20 @@ endmodule"
 fn compile_node<'l>(
     code: &mut Code,
     node: &'l Node,
-    node_map: &'l HashMap<&'l String, &'l mut Node>,
+    node_map: &'l HashMap<String, &'l Node>,
     seen: &mut HashSet<&'l String>,
+    current_state_reg: &String,
+    full_compile: bool,
 ) -> bool {
+    if !full_compile && node.node_type == NodeType::State {
+        code.update(format!(
+            "
+{} <= {};",
+            current_state_reg, node.id
+        ));
+        return true;
+    }
+
     if seen.contains(&node.node_name) {
         return false;
     }
@@ -250,7 +284,14 @@ if ({}) begin",
             check_cond
         ));
 
-        if !compile_node(code, node_map.get(&yes_node).unwrap(), node_map, seen) {
+        if !compile_node(
+            code,
+            node_map.get(&yes_node).unwrap(),
+            node_map,
+            seen,
+            current_state_reg,
+            false,
+        ) {
             return false;
         }
 
@@ -259,7 +300,14 @@ if ({}) begin",
 end else begin"
         ));
 
-        if !compile_node(code, node_map.get(&no_node).unwrap(), node_map, seen) {
+        if !compile_node(
+            code,
+            node_map.get(&no_node).unwrap(),
+            node_map,
+            seen,
+            current_state_reg,
+            false,
+        ) {
             return false;
         }
 
@@ -267,6 +315,7 @@ end else begin"
             "
 end"
         ));
+        return true;
     }
     let mut then_node = "".to_string();
     for command in node.commands.iter() {
@@ -288,5 +337,12 @@ end"
         }
     }
 
-    compile_node(code, node_map.get(&then_node).unwrap(), node_map, seen)
+    compile_node(
+        code,
+        node_map.get(&then_node).unwrap(),
+        node_map,
+        seen,
+        current_state_reg,
+        false,
+    )
 }
