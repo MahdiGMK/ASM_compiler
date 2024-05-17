@@ -44,6 +44,7 @@ pub enum Command {
 pub enum UnableToParseError {
     InvalidFormat,
     InvalidRange,
+    CircularDependency,
 }
 impl FromStr for Command {
     type Err = UnableToParseError;

@@ -9,9 +9,10 @@ pub enum NodeType {
 }
 #[derive(Debug)]
 pub struct Node {
-    node_name: String,
-    node_type: NodeType,
-    commands: Vec<Command>,
+    pub node_name: String,
+    pub node_type: NodeType,
+    pub commands: Vec<Command>,
+    pub id: u32,
 }
 impl Node {
     pub fn try_parse(

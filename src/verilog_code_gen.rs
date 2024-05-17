@@ -13,13 +13,9 @@ impl Code {
     pub fn update(&mut self, text: String) {
         self.code.push_str(text.as_ref());
     }
-    pub fn create_wire(&mut self, prefix: &String, name: &String, postfix: &String) -> String {
+    pub fn get_varname(&mut self, name: &String) -> String {
         self.hsh = ((self.hsh + 1) as u64 * HSH_BASE % HSH_MOD) as u32;
         let var_name = format!("{}__{:x}", name, self.hsh);
-        self.update(format!(
-            "
-wire {prefix}{var_name}{postfix};"
-        ));
         var_name
     }
 }
