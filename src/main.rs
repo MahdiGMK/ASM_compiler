@@ -84,34 +84,64 @@ fn main() -> Result<(), UnableToParseError> {
                 bits,
                 array,
             } => {
-                params.push(format!(
-                    "input [{}:{}]{}[{}:{}]",
-                    bits.start, bits.end, pin_name, array.start, array.end
-                ));
+                if array.start != array.end || array.start != 0 {
+                    params.push(format!(
+                        "input [{}:{}]{}[{}:{}]",
+                        bits.start, bits.end, pin_name, array.start, array.end
+                    ));
+                } else {
+                    params.push(format!("input [{}:{}]{}", bits.start, bits.end, pin_name));
+                }
             }
             Command::Output {
                 pin_name,
                 bits,
                 array,
             } => {
-                params.push(format!(
-                    "output reg [{}:{}]{}[{}:{}]",
-                    bits.start, bits.end, pin_name, array.start, array.end
-                ));
+                if array.start != array.end || array.start != 0 {
+                    params.push(format!(
+                        "output reg [{}:{}]{}[{}:{}]",
+                        bits.start, bits.end, pin_name, array.start, array.end
+                    ));
+                } else {
+                    params.push(format!(
+                        "output reg [{}:{}]{}",
+                        bits.start, bits.end, pin_name
+                    ));
+                }
             }
             Command::Inout {
                 pin_name,
                 bits,
                 array,
             } => {
-                params.push(format!(
-                    "inout [{}:{}]{}[{}:{}]",
-                    bits.start, bits.end, pin_name, array.start, array.end
-                ));
+                if array.start != array.end || array.start != 0 {
+                    params.push(format!(
+                        "inout [{}:{}]{}[{}:{}]",
+                        bits.start, bits.end, pin_name, array.start, array.end
+                    ));
+                } else {
+                    params.push(format!("inout [{}:{}]{}", bits.start, bits.end, pin_name));
+                }
             }
             _ => {}
         }
     }
+
+    fullCode.update(format!(
+        "
+module {}({});",
+        module,
+        params.join(" , ")
+    ));
+
+    fullCode.update(
+        "
+endmodule"
+            .to_string(),
+    );
+
+    println!("{}", fullCode.code);
 
     Ok(())
 }

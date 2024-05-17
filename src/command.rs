@@ -68,7 +68,7 @@ impl FromStr for Command {
                 "check" => Ok(Self::Check {
                     check: rhs.trim().to_string(),
                 }),
-                _ => unsafe {
+                _ => {
                     if SINGLE_BIT_INPUT.is_match(rhs.trim()) {
                         Ok(Self::Input {
                             pin_name: lhs.trim().to_string(),
@@ -211,7 +211,7 @@ impl FromStr for Command {
                             reg_value: rhs.trim().to_string(),
                         })
                     }
-                },
+                }
             }
         } else {
             Err(UnableToParseError::InvalidFormat)
