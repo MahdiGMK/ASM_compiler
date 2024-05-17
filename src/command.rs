@@ -38,6 +38,7 @@ pub enum Command {
     No {
         next_node: String,
     },
+    Empty,
 }
 #[derive(Debug)]
 pub enum UnableToParseError {
@@ -48,6 +49,9 @@ impl FromStr for Command {
     type Err = UnableToParseError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
+        if s.trim().is_empty() {
+            return Ok(Command::Empty);
+        }
         let mut parts = s.split("=>");
 
         if let (Some(lhs), Some(rhs)) = (parts.next(), parts.next()) {
@@ -493,6 +497,14 @@ mod tests {
                 assert_eq!(bits, 1..0);
                 assert_eq!(array, 4..0);
             }
+            _ => assert!(false),
+        }
+    }
+    #[test]
+    fn empty_test() {
+        let cmd = "       ".parse::<Command>();
+        match cmd {
+            Ok(Command::Empty) => {}
             _ => assert!(false),
         }
     }
