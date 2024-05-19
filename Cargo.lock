@@ -12,8 +12,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "dsd_midterm_problem_b"
-version = "0.1.0"
+name = "asm_to_verilog_compiler"
+version = "0.2.0"
 dependencies = [
  "lazy_static",
  "regex",

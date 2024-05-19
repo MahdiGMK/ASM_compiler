@@ -1,0 +1,392 @@
+m255
+K4
+z2
+!s11f vlog 2020.4 2020.10, Oct 13 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/mahdigmk/Apps/modeltech
+T_opt
+!s110 1710700324
+VE7UkWN7dH6o9cJ30Jg]LW3
+04 9 4 work testbench fast 0
+=1-70665589dbfd-65f73724-307e2-97a3
+Z1 o-quiet -auto_acc_if_foreign -work work
+Z2 tCvgOpt 0
+n@_opt
+Z3 OL;O;2020.4;71
+R0
+T_opt1
+!s110 1715969941
+V>25CI1LD[zV<7^DXS`fIn1
+Z4 04 4 4 work test fast 0
+=1-000ae431a4f1-66479f95-7340c-11a70
+R1
+R2
+n@_opt1
+R3
+R0
+T_opt2
+!s110 1716108484
+VcEVIUKFh?FA^H:PK83`jJ2
+R4
+=1-000ae431a4f1-6649bcc4-36059-1a6d
+R1
+R2
+n@_opt2
+R3
+vAdder
+!s110 1710700314
+!i10b 1
+!s100 ?C``4F]:g=kWGzbVBLJ183
+Z5 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IY<Xc<R5lO2IV60IY6aaE=1
+Z6 d/home/mahdigmk/DevEnv/SUT/DSD/HW2
+w1710700280
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Adder.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Adder.v
+!i122 178
+Z7 L0 1 37
+Z8 VDg1SIo80bB@j0V0VzS_@n1
+Z9 OL;L;2020.4;71
+r1
+!s85 0
+31
+Z10 !s108 1710700314.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Adder.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Adder.v|
+!i113 0
+Z11 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+n@adder
+vadder
+Z12 !s110 1712151638
+!i10b 1
+!s100 8WT_aMR5HVbhbD3L`=I342
+R5
+IGSVV^WP1DMke<49<d[5>L3
+Z13 d/home/mahdigmk/DevEnv/SUT/DSD/TESTING
+Z14 w1712151634
+Z15 8./src/top.v
+Z16 F./src/top.v
+!i122 195
+L0 25 18
+R8
+R9
+r1
+!s85 0
+31
+Z17 !s108 1712151638.000000
+Z18 !s107 ./src/top.v|
+Z19 !s90 -work|work|-vopt|./src/top.v|
+!i113 0
+R11
+R2
+vCRAdder
+!s110 1710681500
+!i10b 1
+!s100 hiC_<`hBN3]mncO]Oel=c3
+R5
+Ij^@j<`d8bda?:Q6jfoJ@_1
+R6
+w1710681495
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/CRAdder.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/CRAdder.v
+!i122 149
+R7
+R8
+R9
+r1
+!s85 0
+31
+!s108 1710681500.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/CRAdder.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/CRAdder.v|
+!i113 0
+R11
+R2
+n@c@r@adder
+vFA
+Z20 !s110 1710700290
+!i10b 1
+!s100 _OhzG?i1GV4fBTFkgR6On1
+R5
+I[f2aP;G<e=^2KaV1>`[@01
+R6
+w1710699929
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA.v
+!i122 177
+Z21 L0 1 22
+R8
+R9
+r1
+!s85 0
+31
+Z22 !s108 1710700290.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA.v|
+!i113 0
+R11
+R2
+n@f@a
+vFA4
+!s110 1709825301
+!i10b 1
+!s100 =YO9DM_1[LQo]V]82E1E]2
+R5
+I2<RI@ioAUY5ARSJ>[oXK[2
+R6
+w1709825291
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA4.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA4.v
+!i122 24
+Z23 L0 1 10
+R8
+R9
+r1
+!s85 0
+31
+!s108 1709825301.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA4.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA4.v|
+!i113 0
+R11
+R2
+n@f@a4
+vFA8
+!s110 1710315110
+!i10b 1
+!s100 mgnFHkz=5Bc`am?0jOQN?3
+R5
+Ig8DDjR3N9mO^eK`YWb9B`3
+R6
+w1710315106
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA8.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA8.v
+!i122 65
+R7
+R8
+R9
+r1
+!s85 0
+31
+!s108 1710315110.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA8.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA8.v|
+!i113 0
+R11
+R2
+n@f@a8
+vfull_adder
+R12
+!i10b 1
+!s100 l5Zc5TGaMV;d9I3^9m?]L1
+R5
+IzMNkF<Ndn3`nmbaDJnh^B0
+R13
+R14
+R15
+R16
+!i122 195
+L0 12 12
+R8
+R9
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 0
+R11
+R2
+vHA
+R20
+!i10b 1
+!s100 SH^?<KJkMXWK5C3XPOU803
+R5
+Ie`74fkg7I?m`:Ih<jFWJe1
+R6
+w1710699648
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/HA.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/HA.v
+!i122 176
+L0 1 9
+R8
+R9
+r1
+!s85 0
+31
+R22
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/HA.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/HA.v|
+!i113 0
+R11
+R2
+n@h@a
+vhalf_adder
+R12
+!i10b 1
+!s100 zk7aG06hSQLeMSZgcd[4@3
+R5
+I^MU5`TYPS]njED[kMfTX63
+R13
+R14
+R15
+R16
+!i122 195
+R23
+R8
+R9
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 0
+R11
+R2
+vmem
+!s110 1712252573
+!i10b 1
+!s100 Bjb_RfbL^6Z:1zYhOFAo00
+R5
+I;QHUWDJ4F7dLf35F;XSQ03
+R13
+w1712252432
+Z24 8./src/a.v
+Z25 F./src/a.v
+!i122 196
+L0 1 34
+R8
+R9
+r1
+!s85 0
+31
+!s108 1712252573.000000
+Z26 !s107 ./src/a.v|
+Z27 !s90 -work|work|-vopt|./src/a.v|
+!i113 0
+R11
+R2
+vmultiplier
+Z28 !s110 1716108481
+!i10b 1
+!s100 QJcc`BF@AeKMMbi7LTk<h2
+R5
+I3?NbnR;aXmbD;6QA[F3ch3
+Z29 d/home/mahdigmk/DevEnv/SUT/DSD/MidTerm/B/TestingEnv
+w1716108229
+8./src/multiplier.v
+F./src/multiplier.v
+!i122 371
+L0 2 40
+R8
+R9
+r1
+!s85 0
+31
+Z30 !s108 1716108481.000000
+!s107 ./src/multiplier.v|
+!s90 -work|work|-vopt|./src/multiplier.v|
+!i113 0
+R11
+R2
+vram
+R28
+!i10b 1
+!s100 CW5j>QBUAl89HLl29`GEd2
+R5
+IiCCi^Z7don39]Q?n:CSCh1
+R29
+w1716045235
+8./src/ram.v
+F./src/ram.v
+!i122 372
+L0 2 26
+R8
+R9
+r1
+!s85 0
+31
+R30
+!s107 ./src/ram.v|
+!s90 -work|work|-vopt|./src/ram.v|
+!i113 0
+R11
+R2
+vShift
+!s110 1710352527
+!i10b 1
+!s100 baC>dWf7CXd38noTF:^B_1
+R5
+IVOTZ2IPg:a0K1h4nWc^RL2
+R6
+w1710352520
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Shift.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Shift.v
+!i122 113
+L0 1 18
+R8
+R9
+r1
+!s85 0
+31
+!s108 1710352526.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Shift.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Shift.v|
+!i113 0
+R11
+R2
+n@shift
+vtest
+R28
+!i10b 1
+!s100 CYD2Pcn@kB9VU7jeCg>9S1
+R5
+IS;Df=W1AoMXNcc7H_0a0;1
+R29
+w1716108479
+R24
+R25
+!i122 370
+L0 1 122
+R8
+R9
+r1
+!s85 0
+31
+R30
+R26
+R27
+!i113 0
+R11
+R2
+vtestbench
+!s110 1710700315
+!i10b 1
+!s100 oHAS;?LA<J`ToTOM^`?4H3
+R5
+Ib?go^2Q]S6aX]:ZKFMolS2
+R6
+w1710699934
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/testbench.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/testbench.v
+!i122 179
+R21
+R8
+R9
+r1
+!s85 0
+31
+R10
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/testbench.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/testbench.v|
+!i113 0
+R11
+R2

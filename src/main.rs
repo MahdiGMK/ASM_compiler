@@ -53,7 +53,6 @@ fn main() -> Result<(), UnableToParseError> {
     let mut top_level_commands: Vec<Command> = vec![];
 
     for capt in node_regex.captures_iter(&contents) {
-        println!("{}", capt.get(0).unwrap().as_str());
         let pre_node = capt.get(1).unwrap();
         let node_name = capt.get(2).unwrap();
         let node_type = capt.get(3).unwrap();
@@ -138,7 +137,7 @@ fn main() -> Result<(), UnableToParseError> {
 
     code.update(format!(
         "
-module {}(input clk , {});",
+module {}(input clk , input reset , {});",
         module,
         params.join(" , ")
     ));
@@ -184,11 +183,31 @@ reg [{}:{}]{};",
     let current_state_reg = code.get_varname(&"currentState".to_string());
     code.update(format!(
         "
-reg [{bit_count}:0]{current_state_reg} = 0;",
+reg [{bit_count}:0]{current_state_reg};",
     ));
 
     let mut inout_write_regs = HashMap::new();
     for command in top_level_commands.iter() {
+        if let Command::Register {
+            reg_name,
+            bits,
+            array,
+        } = command
+        {
+            if array.start == array.end && array.start == 0 {
+                code.update(format!(
+                    "
+reg [{} : {}]{};",
+                    bits.start, bits.end, reg_name
+                ));
+            } else {
+                code.update(format!(
+                    "
+reg [{} : {}]{}[{} : {}];",
+                    bits.start, bits.end, reg_name, array.start, array.end
+                ));
+            }
+        }
         if let Command::Inout {
             pin_name,
             bits,
@@ -212,12 +231,19 @@ reg [{} : {}]{}[{} : {}];",
             }
             code.update(format!(
                 "
-reg {write_reg} = 0;
+reg {write_reg};
 assign {pin_name} = {write_reg} ? {main_reg} : 'bZ;"
             ));
             inout_write_regs.insert(pin_name.clone(), (main_reg, write_reg));
         }
     }
+
+    code.update(format!(
+        "
+always @(posedge reset)
+{current_state_reg} = 0;
+"
+    ));
 
     code.update(
         "
@@ -225,24 +251,24 @@ always @(posedge clk) begin"
             .to_string(),
     );
 
-    for command in top_level_commands.iter() {
-        if let Command::Output {
-            pin_name,
-            bits,
-            array,
-        } = command
-        {
-            code.update(format!(
-                "
-{pin_name} = 0;"
-            ))
-        }
-    }
+    //     for command in top_level_commands.iter() {
+    //         if let Command::Output {
+    //             pin_name,
+    //             bits,
+    //             array,
+    //         } = command
+    //         {
+    //             code.update(format!(
+    //                 "
+    // {pin_name} = 0;"
+    //             ))
+    //         }
+    //     }
     for inout in inout_write_regs.iter() {
         code.update(format!(
             "
-{} = 0;
-{} = {}",
+{} <= 0;
+{} <= {};",
             inout.1 .1, inout.1 .0, inout.0
         ));
     }
@@ -299,8 +325,7 @@ endmodule"
             .to_string(),
     );
 
-    println!("{}", code.code);
-
+    let _ = std::fs::write(Path::new(&outpath), code.code);
     Ok(())
 }
 

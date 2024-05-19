@@ -1,0 +1,7 @@
+{
+    "systemverilog.includeIndexing": ["**/*.{v,sv,svh}"],
+    "systemverilog.excludeIndexing": ["test/**/*.sv*"],
+    "systemverilog.defines" : [],
+    "systemverilog.launchConfiguration": "/tools/verilator -v -Wall --lint-only --timing",
+    "systemverilog.formatCommand": "/tools/verible-verilog-format"
+}

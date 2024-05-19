@@ -1,0 +1,277 @@
+m255
+K4
+z2
+!s11f vlog 2020.4 2020.10, Oct 13 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/mahdigmk/Apps/modeltech
+T_opt
+!s110 1710700324
+VE7UkWN7dH6o9cJ30Jg]LW3
+Z1 04 9 4 work testbench fast 0
+=1-70665589dbfd-65f73724-307e2-97a3
+Z2 o-quiet -auto_acc_if_foreign -work work
+Z3 tCvgOpt 0
+n@_opt
+Z4 OL;O;2020.4;71
+T_opt1
+!s110 1710682524
+VijmYn0k32lB9ac1Rk:M052
+04 4 4 work test fast 0
+=1-70665589dbfd-65f6f19c-cc78c-3a84
+R2
+R3
+n@_opt1
+R4
+R0
+T_opt2
+!s110 1710684512
+VN2KBhOZU?AdRL62>`1:cE3
+R1
+=1-70665589dbfd-65f6f960-1d5c9-4a82
+o-quiet -auto_acc_if_foreign -work work -debugdb
+R3
+n@_opt2
+R4
+R0
+vAdder
+!s110 1710700314
+!i10b 1
+!s100 ?C``4F]:g=kWGzbVBLJ183
+Z5 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IY<Xc<R5lO2IV60IY6aaE=1
+Z6 d/home/mahdigmk/DevEnv/SUT/DSD/HW2
+w1710700280
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Adder.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Adder.v
+!i122 178
+Z7 L0 1 37
+Z8 VDg1SIo80bB@j0V0VzS_@n1
+Z9 OL;L;2020.4;71
+r1
+!s85 0
+31
+Z10 !s108 1710700314.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Adder.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Adder.v|
+!i113 0
+Z11 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R3
+n@adder
+vadder
+!s110 1710684504
+!i10b 1
+!s100 C<@XAc?Xgj>QJm7VGgoe=2
+R5
+I0Y6SVfR[Tnj[<3J[R=R0e1
+R6
+w1710684494
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/adder.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/adder.v
+!i122 174
+R7
+R8
+R9
+r1
+!s85 0
+31
+!s108 1710684504.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/adder.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/adder.v|
+!i113 0
+R11
+R3
+vCRAdder
+!s110 1710681500
+!i10b 1
+!s100 hiC_<`hBN3]mncO]Oel=c3
+R5
+Ij^@j<`d8bda?:Q6jfoJ@_1
+R6
+w1710681495
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/CRAdder.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/CRAdder.v
+!i122 149
+R7
+R8
+R9
+r1
+!s85 0
+31
+!s108 1710681500.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/CRAdder.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/CRAdder.v|
+!i113 0
+R11
+R3
+n@c@r@adder
+vFA
+Z12 !s110 1710700290
+!i10b 1
+!s100 _OhzG?i1GV4fBTFkgR6On1
+R5
+I[f2aP;G<e=^2KaV1>`[@01
+R6
+w1710699929
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA.v
+!i122 177
+Z13 L0 1 22
+R8
+R9
+r1
+!s85 0
+31
+Z14 !s108 1710700290.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA.v|
+!i113 0
+R11
+R3
+n@f@a
+vFA4
+!s110 1709825301
+!i10b 1
+!s100 =YO9DM_1[LQo]V]82E1E]2
+R5
+I2<RI@ioAUY5ARSJ>[oXK[2
+R6
+w1709825291
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA4.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA4.v
+!i122 24
+L0 1 10
+R8
+R9
+r1
+!s85 0
+31
+!s108 1709825301.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA4.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA4.v|
+!i113 0
+R11
+R3
+n@f@a4
+vFA8
+!s110 1710315110
+!i10b 1
+!s100 mgnFHkz=5Bc`am?0jOQN?3
+R5
+Ig8DDjR3N9mO^eK`YWb9B`3
+R6
+w1710315106
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA8.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA8.v
+!i122 65
+R7
+R8
+R9
+r1
+!s85 0
+31
+!s108 1710315110.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA8.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/FA8.v|
+!i113 0
+R11
+R3
+n@f@a8
+vHA
+R12
+!i10b 1
+!s100 SH^?<KJkMXWK5C3XPOU803
+R5
+Ie`74fkg7I?m`:Ih<jFWJe1
+R6
+w1710699648
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/HA.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/HA.v
+!i122 176
+L0 1 9
+R8
+R9
+r1
+!s85 0
+31
+R14
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/HA.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/HA.v|
+!i113 0
+R11
+R3
+n@h@a
+vShift
+!s110 1710352527
+!i10b 1
+!s100 baC>dWf7CXd38noTF:^B_1
+R5
+IVOTZ2IPg:a0K1h4nWc^RL2
+R6
+w1710352520
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Shift.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Shift.v
+!i122 113
+L0 1 18
+R8
+R9
+r1
+!s85 0
+31
+!s108 1710352526.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Shift.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/Shift.v|
+!i113 0
+R11
+R3
+n@shift
+vtest
+Z15 !s110 1710700315
+!i10b 1
+!s100 OR^A6T?DeFXU:1BUG4P0Q2
+R5
+I<>PQ<kkVD5bQGE>?W1^>40
+R6
+w1710699427
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/test.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/test.v
+!i122 180
+L0 1 41
+R8
+R9
+r1
+!s85 0
+31
+!s108 1710700315.000000
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/test.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/test.v|
+!i113 0
+R11
+R3
+vtestbench
+R15
+!i10b 1
+!s100 oHAS;?LA<J`ToTOM^`?4H3
+R5
+Ib?go^2Q]S6aX]:ZKFMolS2
+R6
+w1710699934
+8/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/testbench.v
+F/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/testbench.v
+!i122 179
+R13
+R8
+R9
+r1
+!s85 0
+31
+R10
+!s107 /home/mahdigmk/DevEnv/SUT/DSD/HW2/src/testbench.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/home/mahdigmk/DevEnv/SUT/DSD/HW2/src/testbench.v|
+!i113 0
+R11
+R3
